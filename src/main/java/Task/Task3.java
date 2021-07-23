@@ -32,16 +32,16 @@ public class Task3 {
 
     public String upperCaseString (String s){
         char[] charArray = s.toCharArray();
-        boolean foundSpace = true;
+        boolean check = true;
         for(int i = 0; i < charArray.length; i++) {
             if(Character.isLetter(charArray[i])) {
-                if(foundSpace) {
+                if(check) {
                     charArray[i] = Character.toUpperCase(charArray[i]);
-                    foundSpace = false;
+                    check = false;
                 }
             }
             else {
-                foundSpace = true;
+                check = true;
             }
         }
         s = String.valueOf(charArray);
