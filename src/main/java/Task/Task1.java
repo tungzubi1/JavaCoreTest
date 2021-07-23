@@ -25,7 +25,6 @@ import java.util.Scanner;
 public class Task1 {
 
     public List<Integer> readData() {
-        //write your code here
         try {
             Scanner reader = new Scanner(System.in);
             System.out.println("Nhập dãy số: ");
