@@ -1,13 +1,15 @@
 package Task;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
-Example input:
+ * Write a method readString that reads a string from the keyboard.
+ *
+ * Write a method upperCaseString to change the first letter of each word to uppercase
+ *
+ * Display the result on the screen.
+ *
+ * Example input:
  * sam i am.
  *
  * Example output:
@@ -18,31 +20,37 @@ Example input:
  * •The method upperCaseString should change the first letter of each word to uppercase
  * •The main method displays the result to screen.
  */
-
 public class Task3 {
-    public String readString() throws IOException {
-        //write your code here
+    public String readString()  {
         Scanner sc = new Scanner(System.in);
-                new InputStreamReader(System.in));
+        String s;
+        System.out.println("Nhập chuỗi: ");
+        s = sc.nextLine();
 
-        System.out.println("Enter a String: ");
-        return reader.readLine();
+        return s;
     }
 
-    public String upperCaseString(String s) {
-        //write your code here
-        return Stream.of(s.trim().split("\\s"))
-                .filter(word -> word.length() > 0)
-                .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
-                .collect(Collectors.joining(" "));
+    public String upperCaseString (String s){
+        char[] charArray = s.toCharArray();
+        boolean foundSpace = true;
+        for(int i = 0; i < charArray.length; i++) {
+            if(Character.isLetter(charArray[i])) {
+                if(foundSpace) {
+                    charArray[i] = Character.toUpperCase(charArray[i]);
+                    foundSpace = false;
+                }
+            }
+            else {
+                foundSpace = true;
+            }
+        }
+        s = String.valueOf(charArray);
+        System.out.println("Chuỗi sau khi đổi: \n" + s);
+        return s;
     }
 
-    public static void main(String[] args) throws IOException {
-        //write your code here
-        Task3 task = new Task3();
-        String str = task.readString();
-        String result = task.upperCaseString(str);
-        System.out.println("Result: " + result);
+    public static void main(String[] args) {
+        Task3 task3 = new Task3();
+        String s = task3.upperCaseString(task3.readString());
     }
-
 }
